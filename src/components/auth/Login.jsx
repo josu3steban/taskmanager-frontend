@@ -1,9 +1,13 @@
+import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
+import { startLogin } from '../../store/slices/auth/authThunk';
 
 
 export const Login = () => {
+
+  const dispatch = useDispatch();
 
   const newLoginSchema = yup.object().shape({
     password  : yup.string().required('Se requiere la contraseña'),
@@ -11,11 +15,13 @@ export const Login = () => {
   });
 
   const handleSubmit = ( values, resetForm ) => {
-    console.log(values);
+
+    dispatch( startLogin(values) );
+    
   };
   
   return (
-    <div className="-mt-20">
+    <div className="-mt-20 animate__animated animate__fadeIn animate__faster">
 
       <header className='text-my-color-one mb-20'>
         <h2 className='uppercase text-5xl text-my-color-one font-black leading-tight mb-3'>inicia sesión y comienza a <span className='text-my-color-three'>administrar tus proyectos!</span> 😉</h2>
@@ -63,7 +69,7 @@ export const Login = () => {
                     className='w-full text-xl p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-my-color-four transition-colors'
                     id='password'
                     name='password'
-                    type='text'
+                    type='password'
                     placeholder='******'
                   />
                   {
@@ -85,14 +91,14 @@ export const Login = () => {
               <nav className='text-gray-400 flex flex-col items-end mt-3'>
                 <Link
                   className='mb-3 hover:text-white w-fit'
-                  to='/register'
+                  to='/auth/register'
                 >
                   ¿No tienes cuenta? ¡Registrate!
                 </Link>
 
                 <Link
                 className='mb-3 hover:text-white w-fit'
-                  to='/forgot-password'
+                  to='/auth/forgot-password'
                 >
                   Olvidé mi contraseña
                 </Link>

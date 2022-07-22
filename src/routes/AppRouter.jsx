@@ -1,22 +1,37 @@
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux';
+
 import { AuthRouter } from "../components/auth/routes"
 import { ProjectRoutes } from "../components/projects/routes";
+import { useEffect } from "react";
+import { stratChecking } from "../store/slices/auth";
+import 'animate.css'
 
 
 export const AppRouter = () => {
 
-  const checking = true;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { checking } = useSelector( state => state.auth );
+
+  useEffect(() => {
+    dispatch( stratChecking() );
+  });
+  
+  if( checking === 'checking') {
+    return( <h1>COMPROBANDO...</h1> );
+  }
   
   return (
     <Routes>
       {
-        ( checking )
+        ( checking === 'not-authenticated' )
           ? <Route path='/auth/*' element={ <AuthRouter /> }/>
 
           : <Route path="/*" element={ <ProjectRoutes /> }/>
       }
 
-      <Route path="/*" element={ <AuthRouter/> } />
+      <Route path="/*" element={ <Navigate to='/auth/' /> } />
         
     </Routes>
   )

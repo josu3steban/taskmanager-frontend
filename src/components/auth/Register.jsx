@@ -1,10 +1,15 @@
+import { useDispatch } from 'react-redux';
+
 import { Formik, Form, Field } from 'formik';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
+import { stratRegister } from '../../store/slices/auth/authThunk';
 
 
 export const Register = () => {
 
+  const dispatch = useDispatch();
+  
   const newLoginSchema = yup.object().shape({
     name      : yup.string().required('El nombre es obligatorio'),
     username  : yup.string().required('El nombre de usuario es obligatorio'),
@@ -13,14 +18,14 @@ export const Register = () => {
   });
 
   const handleSubmit = ( values, resetForm ) => {
-    console.log(values);
+    dispatch( stratRegister( values ) );
   };
   
   return (
-    <div className="">
+    <div className="animate__animated animate__fadeIn animate__faster">
 
       <header className='text-my-color-one mb-20'>
-        <h2 className='uppercase text-5xl text-my-color-one font-black leading-tight mb-3'>¡Registrate y empieza a crear y <span className='text-my-color-three'>administrar proyectos!</span></h2>
+        <h2 className='uppercase text-5xl text-my-color-one font-black leading-tight mb-3'>¡Registrate y empieza a crear y a <span className='text-my-color-three'>administrar proyectos!</span></h2>
         <span className='uppercase text-6xl font-black'>¿qué esperas? 🤑🤑</span>
       </header>
       
@@ -127,7 +132,7 @@ export const Register = () => {
               <nav className='text-gray-400 flex flex-col items-end mt-3'>
                 <Link
                   className='mb-3 hover:text-white w-fit'
-                  to='/login'
+                  to='/auth/'
                 >
                   Ya tengo una cuenta
                 </Link>

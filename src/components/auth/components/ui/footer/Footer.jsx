@@ -4,13 +4,13 @@ export const Footer = () => {
   return (
     <nav className="flex flex-row">
         <Link
-            to='register'
+            to='/auth/register'
         >
             ¿No tienes cuenta? ¡Registrate!
         </Link>
 
         <Link
-            to='register'
+            to='/auth/register'
         >
             ¿No tienes cuenta? ¡Registrate!
         </Link>

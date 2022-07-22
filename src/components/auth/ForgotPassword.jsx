@@ -1,20 +1,24 @@
+import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
+import { startForgotPassword } from '../../store/slices/auth/authThunk';
 
 
 export const ForgotPassword = () => {
 
+  const dispactch = useDispatch();
+  
   const newLoginSchema = yup.object().shape({
     email     : yup.string().email('Email no valido').required('El email es obligatorio')
   });
 
   const handleSubmit = ( values, resetForm ) => {
-    console.log(values);
+    dispactch( startForgotPassword( values ) );
   };
   
   return (
-    <div className="-mt-20">
+    <div className="-mt-20 animate__animated animate__fadeIn animate__faster">
 
       <header className='text-my-color-one mb-10 mt-10'>
         <h2 className='uppercase text-5xl text-my-color-three font-black leading-tight mb-3'>¿no recuerdas cuál es tu contraseña? 😬</h2>
@@ -74,7 +78,7 @@ export const ForgotPassword = () => {
           <nav className='text-gray-400 flex flex-col items-end mt-3'>
             <Link
               className='mb-3 uppercase hover:text-white w-fit'
-              to='/login'
+              to='/auth/'
             >
               iniciar sesión
             </Link>
