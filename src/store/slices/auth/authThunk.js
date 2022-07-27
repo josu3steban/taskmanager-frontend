@@ -1,6 +1,7 @@
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import { fectchWithoutToken, fectchWithToken } from '../../../helpers/fectch';
+import { clearActiveProject } from '../project/projectSlice';
 import { login, logout } from './authSlice';
 
 
@@ -151,5 +152,12 @@ export const startLogin = ({ email, password }) => {
                 confirmButtonText: 'Aceptar'
             });
         }
+    }
+}
+
+export const startLogout = () => {
+    return ( dispatch ) => {
+        dispatch( logout() );
+        dispatch( clearActiveProject() );
     }
 }

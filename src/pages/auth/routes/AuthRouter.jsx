@@ -1,5 +1,6 @@
-import { Routes, Route, Navigate } from "react-router-dom"
-import {  AuthHomePage,Login, Register, ConfirmPassword, ForgotPassword, NewPassword } from "../"
+import { Routes, Route, Navigate } from "react-router-dom";
+import { AuthHomePage } from "../AuthHomePage";
+import { Login, Register, ConfirmPassword, ForgotPassword, NewPassword } from "../components";
 
 export const AuthRouter = () => {
   return (

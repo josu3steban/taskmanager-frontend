@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
-import { startLogin } from '../../store/slices/auth/authThunk';
+import { startLogin } from '../../../store/slices/auth/authThunk';
 
 
 export const Login = () => {

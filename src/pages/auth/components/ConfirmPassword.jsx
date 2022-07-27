@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { startConfirmAccount } from '../../store/slices/auth/authThunk';
+import { startConfirmAccount } from '../../../store/slices/auth/authThunk';
 
 export const ConfirmPassword = () => {
 

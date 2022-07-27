@@ -1,4 +1,3 @@
-export * from './AuthHomePage';
 export * from './ConfirmPassword';
 export * from './ForgotPassword';
 export * from './Login';

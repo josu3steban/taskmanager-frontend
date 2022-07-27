@@ -1,21 +1,26 @@
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import * as yup from 'yup';
-import { startForgotPassword } from '../../store/slices/auth/authThunk';
+import { startNewPassword } from '../../../store/slices/auth/authThunk';
 
 
-export const ForgotPassword = () => {
+export const NewPassword = () => {
 
   const dispactch = useDispatch();
+  const params    = useParams();
+  
+  const { token } = params;
   
   const newLoginSchema = yup.object().shape({
-    email     : yup.string().email('Email no valido').required('El email es obligatorio')
+    password : yup.string().required('Se requiere la contraseña').min(6, 'La contraseña debe tener mínimo 6 caracteres')
   });
 
   const handleSubmit = ( values, resetForm ) => {
-    dispactch( startForgotPassword( values ) );
+    dispactch( startNewPassword( token, values ) );
+    resetForm();
   };
+  
   
   return (
     <div className="-mt-20 animate__animated animate__fadeIn animate__faster">
@@ -29,7 +34,7 @@ export const ForgotPassword = () => {
         <>
           <Formik
             initialValues = {{
-              email   : ''
+              password : ''
             }}
 
             validationSchema = { newLoginSchema }
@@ -46,17 +51,17 @@ export const ForgotPassword = () => {
                 <Form className='px-6 py-10 bg-my-color-two rounded-md'>
                   
                   <div className="">
-                    <label className='block text-3xl font-bold text-my-color-four mb-2 uppercase' htmlFor="email">Email</label>
+                    <label className='block text-3xl font-bold text-my-color-four mb-2 uppercase' htmlFor="email">Nueva Contraseña</label>
                     <Field
                       className='w-full text-xl p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-my-color-four transition-colors'
-                      id='email'
-                      name='email'
-                      type='text'
-                      placeholder='correo@correo.com'
+                      id='password'
+                      name='password'
+                      type='password'
+                      placeholder='******'
                     />
                     {
-                      (errors.email && touched.email )
-                      ? <span className="uppercase block text-sm text-right font-semibold text-red-700">{ errors.email }</span>
+                      (errors.password && touched.password )
+                      ? <span className="uppercase block text-sm text-right font-semibold text-red-700">{ errors.password }</span>
                       : <span className="uppercase block text-sm text-transparent">null</span>
                     }
                   </div>

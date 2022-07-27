@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
-import { stratRegister } from '../../store/slices/auth/authThunk';
+import { stratRegister } from '../../../store/slices/auth/authThunk';
 
 
 export const Register = () => {
