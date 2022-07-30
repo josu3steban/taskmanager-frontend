@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import { fectchWithoutToken, fectchWithToken } from '../../../helpers/fectch';
-import { clearActiveProject } from '../project/projectSlice';
+import { clearActiveProject, clearProject } from '../project/projectSlice';
 import { login, logout } from './authSlice';
 
 
@@ -27,8 +27,6 @@ export const stratRegister = ({ name, username, email, password } ) => {
 
         if( body.ok ) {
             // localStorage.setItem('token', body.token);
-            dispatch( login(body.user) );
-            console.log(body)
             Swal.fire({
                 title   : body.msg,
                 icon    : 'success',
@@ -159,5 +157,6 @@ export const startLogout = () => {
     return ( dispatch ) => {
         dispatch( logout() );
         dispatch( clearActiveProject() );
+        dispatch( clearProject() );
     }
 }

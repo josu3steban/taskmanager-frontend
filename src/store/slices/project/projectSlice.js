@@ -30,7 +30,38 @@ export const projectSlice = createSlice({
         clearActiveProject: ( state, action ) => {
 
             state.activeProject = null;
-            state.projects      = null;
+            state.project       = null;
+            
+        },
+
+        clearProject: ( state, action ) => {
+
+            state.projects = null;
+            
+        },
+
+        addProject: ( state, action ) => {
+
+            state.projects.push( action.payload );
+            
+        },
+
+        getProjectById: ( state, action ) => {
+
+            state.project = { ...action.payload }
+
+        },
+
+        updateProject: ( state, action ) =>{
+
+            state.projects = state.projects.map( project => (project._id === action.payload._id) && action.payload );
+            state.project = { ...action.payload }
+            
+        },
+
+        deleteProject: ( state, action ) => {
+
+            state.projects = state.projects.filter( project => project._id !== action.payload._id );
             
         }
         
@@ -38,4 +69,4 @@ export const projectSlice = createSlice({
     
 });
 
-export const { projectsLoad, setActiveProject, clearActiveProject } = projectSlice.actions;
+export const { projectsLoad, setActiveProject, clearActiveProject, addProject, clearProject, getProjectById, updateProject, deleteProject } = projectSlice.actions;

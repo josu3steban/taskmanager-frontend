@@ -1,6 +1,7 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import { ProjectHomePage } from "../";
-import { Projects, NewProject } from "../components/";
+import { Projects, NewProject, ProjectById } from "../components/";
+import { EditProject } from "../components/edit/EditProject";
 
 
 export const ProjectRoutes = () => {
@@ -9,6 +10,9 @@ export const ProjectRoutes = () => {
         <Route path="/" element={ <ProjectHomePage /> }>
           <Route index element={ <Projects /> } />
           <Route path="new-project" element={ <NewProject /> } />
+          <Route path="project/edit/:id" element={ <EditProject /> } />
+
+          <Route path="project/:id" element={ <ProjectById /> } />
         </Route>
 
         <Route path="/*" element={ <Navigate to='/' /> }/>
