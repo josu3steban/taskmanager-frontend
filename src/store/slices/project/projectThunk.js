@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import { fectchWithoutToken, fectchWithToken } from "../../../helpers/fectch";
+import { task_LoadTasks } from "../task";
 import { addProject, clearActiveProject, deleteProject, getProjectById, projectsLoad, setActiveProject, updateProject } from "./projectSlice";
 
 
@@ -11,7 +12,7 @@ export const startProjectLoad = () => {
         const body     = await response.json();
 
         if( body.ok ) {
-
+            
             dispatch( projectsLoad(body.projects) );
 
         }else {
@@ -35,8 +36,6 @@ export const startAddProject = ( project ) => {
         const response = await fectchWithToken('project', project, 'POST');
         const body = await response.json();
 
-        console.log(body)
-        
         if( body.ok ) {
 
             Swal.fire({
@@ -72,9 +71,9 @@ export const startGetProjectById = ( id ) => {
 
         if( body.ok ) {
 
-            dispatch( getProjectById( body.project ) )
-            dispatch( setActiveProject( body.project._id ) );
-
+            dispatch( getProjectById(body.project) )
+            dispatch( setActiveProject(body.project._id) );
+            dispatch( task_LoadTasks(body.project.tasks) );
         }else {
 
             Swal.fire({

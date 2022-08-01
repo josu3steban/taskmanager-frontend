@@ -54,7 +54,7 @@ export const projectSlice = createSlice({
 
         updateProject: ( state, action ) =>{
 
-            state.projects = state.projects.map( project => (project._id === action.payload._id) && action.payload );
+            state.projects = state.projects.map( project => (project._id === action.payload._id) ? action.payload : project );
             state.project = { ...action.payload }
             
         },

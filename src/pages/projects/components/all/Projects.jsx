@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Spinner } from '../../../ui/Spinner'
-import { startProjectLoad } from '../../../../store/slices/project';
+import { clearActiveProject, startProjectLoad } from '../../../../store/slices/project';
 import { ProjectsContainer } from "./ProjectsContainer"
 
 export const Projects = () => {

@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { Dialog, Transition } from '@headlessui/react';
@@ -6,23 +6,58 @@ import { Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
 
 import { modalTaskClose } from '../../../store/slices/ui/modalTaskSlice';
+import { task_ClearActiveTask, task_startAddTask, task_startUpdateTask } from '../../../store/slices/task';
 
 
 export const ModalFormTask = () => {
  
     const dispatch = useDispatch();
-    
-    const { modalTaskIsOpen } = useSelector( state => state.modalTask );
 
+    const [ dateSelect, setDateSelect ] = useState(false);
+
+    const { activeProject }   = useSelector( state => state.project );
+    const { modalTaskIsOpen } = useSelector( state => state.modalTask );
+    const { task }            = useSelector( state => state.task );
+
+    const PRIORITY = ['Baja', 'Media', 'Alta'];
+    
+    const newTaskSchema = yup.object().shape({
+        name: yup.string().required('El nombre es obligatorio'),
+        description: yup.string().required('La descripción es obligatoria'),
+        priority: yup.string().required('Debes seleccionar la prioridad'),
+        delivery: yup.date().required('Se requiere una fecha de entrega')
+    });
+    
     const handleCloseModal = () => {
 
         dispatch( modalTaskClose() );
+
+        setTimeout(() => {
+            dispatch( task_ClearActiveTask() );
+        }, 200);
         
     };
 
     const handleSubmit = ( values, reset ) => {
 
-        console.log('submit del modal');
+        const newTask = {...values, project: activeProject }
+
+        if(!!task) {
+
+            dispatch( task_startUpdateTask(task._id, newTask) );
+
+        }else {
+
+            dispatch( task_startAddTask(newTask) );
+
+        }
+
+        setTimeout(() => {
+
+            dispatch( modalTaskClose() );
+            dispatch( task_ClearActiveTask() );
+            
+        },700);
         
     }
     
@@ -89,10 +124,13 @@ export const ModalFormTask = () => {
 
                                         <Formik
                                             initialValues = {{
-                                                name: '',
-                                                priority: '',
-                                                description: ''
+                                                name        : (task?.name)          ?? '',
+                                                priority    : (task?.priority)      ?? '',
+                                                description : (task?.description)   ?? '',
+                                                delivery    : (task?.delivery)      ? task.delivery.split('T')[0] : ''
                                             }}
+
+                                            validationSchema = { newTaskSchema }
 
                                             enableReinitialize = { true }
 
@@ -111,7 +149,7 @@ export const ModalFormTask = () => {
                                                                     type='text'
                                                                     name='name'
                                                                     id='name'
-                                                                    placeholder='Nombre del proyecto'
+                                                                    placeholder='Nombre de la tarea'
                                                                 />
                                                                 {
                                                                     (errors.name && touched.name)
@@ -128,7 +166,7 @@ export const ModalFormTask = () => {
                                                                     row="5"
                                                                     name='description'
                                                                     id='description'
-                                                                    placeholder='Descripción del proyecto'
+                                                                    placeholder='Descripción de la tarea'
                                                                 />
                                                                 {
                                                                     (errors.description && touched.description)
@@ -139,15 +177,35 @@ export const ModalFormTask = () => {
 
                                                             <div className="">
                                                                 <Field
+                                                                    className='textce w-11/12 mt-5 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                                                                    type={ (dateSelect) ? 'date' : 'text'}
+                                                                    onFocus ={ () => { setDateSelect(true) }}
+                                                                    onBlur  ={ () => { setDateSelect(false) }}
+                                                                    name='delivery'
+                                                                    id='delivery'
+                                                                    placeholder='Fecha de entrega del proyecto'
+                                                                />
+                                                                {
+                                                                    (errors.delivery && touched.delivery)
+                                                                    ? <span className="self-end uppercase block text-sm text-right font-semibold text-red-700">{ errors.delivery }</span>
+                                                                    : <span className="uppercase block text-sm text-transparent">null</span>
+                                                                }
+                                                            </div>
+
+                                                            <div className="mt-5">
+                                                                <Field
                                                                     className='w-11/12 bg-my-color-one rounded-xl text-center border-[3px] border-my-color-two focus:outline-none mt-5 px-3 py-2 text-2xl font-medium text-my-color-five'
                                                                     as="select"
                                                                     name='priority'
                                                                     id='priority'
                                                                 >
-                                                                    <option selected disabled hidden value="">Elige la prioridad</option>
-                                                                    <option className='' value="baja">Baja</option>
-                                                                    <option value="media">Media</option>
-                                                                    <option value="alta">Alta</option>
+                                                                    <option defaultValue={true} disabled hidden value="">Elige la prioridad</option>
+                                                                    {
+                                                                        PRIORITY.map( option => (
+                                                                            <option key={option} value={option}>{option}</option>
+                                                                        ))
+                                                                    }
+
                                                                 </Field>
                                                                 
                                                                 {
@@ -157,6 +215,7 @@ export const ModalFormTask = () => {
                                                                 }
                                                             </div>
 
+
                                                             <div className="w-11/12 flex gap-5 justify-end mt-10">
 
                                                                 <button
@@ -164,8 +223,9 @@ export const ModalFormTask = () => {
                                                                     type="submit"
                                                                 >
                                                                     {
-                                                                        // ? 'Actualizar'
-                                                                        'Guardar'
+                                                                        (!!task)
+                                                                            ? 'Actualizar'
+                                                                            : 'Guardar'
                                                                     }
                                                                     
                                                                 </button>

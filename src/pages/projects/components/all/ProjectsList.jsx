@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "../../../../helpers/formatDate";
 import { setActiveProject } from "../../../../store/slices/project";
 
 export const ProjectsList = ({ project }) => {
@@ -7,7 +8,7 @@ export const ProjectsList = ({ project }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   
-  const dateFormat = new Date( project.delivery );
+  // const dateFormat = formatDate(project.delivery);
   
   const handleSelectActiveProject = ( idProject ) => {
 
@@ -39,7 +40,7 @@ export const ProjectsList = ({ project }) => {
 
       <p className="text-lg text-my-color-five font-medium">{ project.description }</p>
       
-      <span className="self-end text-my-color-three font-medium">Fehca de entrega: <span className="text-my-color-five">{`${dateFormat.getDate()}/${dateFormat.getMonth()+1}/${dateFormat.getFullYear()}`}</span> </span>
+      <span className="self-end text-my-color-three font-medium">Fehca de entrega: <span className="text-my-color-five">{ formatDate(project.delivery) }</span> </span>
       
     </section>
     

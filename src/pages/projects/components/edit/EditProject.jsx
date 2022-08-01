@@ -45,8 +45,6 @@ export const EditProject = () => {
           navigate('/');
         }, 1500);
       }
-
-      
     })
     
   };

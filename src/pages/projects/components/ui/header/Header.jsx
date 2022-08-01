@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { startLogout } from '../../../../../store/slices/auth/'
 
 import './header.css';
-import { clearActiveProject } from '../../../../../store/slices/project/projectSlice';
+import { clearActiveProject, task_ClearActiveTask, task_clearAllTasks } from '../../../../../store';
 
 export const Header = () => {
 
@@ -15,7 +15,10 @@ export const Header = () => {
   const handleLogout = () => {
 
     dispatch( startLogout() );
-    
+    dispatch( clearActiveProject() );
+    dispatch( task_ClearActiveTask() );
+    dispatch( task_clearAllTasks() );
+
   };
 
   const hanldeNewProject = () => {
@@ -23,11 +26,18 @@ export const Header = () => {
     dispatch( clearActiveProject() );
     navigate('/new-project');
 
+  };
+
+  const handleHomePage = () => {
+    dispatch( clearActiveProject() );
+    dispatch( task_ClearActiveTask() );
+    dispatch( task_clearAllTasks() );
+    navigate('/');
   }
   
   return (
     <header className="flex justify-between items-center px-5 py-5">
-      <Link to='/' className="font-black text-3xl text-my-color-five cursor-default">TaskManager</Link>
+      <h2 onClick={handleHomePage} className="font-black text-3xl text-my-color-five cursor-default">TaskManager</h2>
 
       <input
         className="p-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-my-color-two transition-all "

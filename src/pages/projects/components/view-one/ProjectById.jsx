@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { startGetProjectById } from '../../../../store/slices/project';
+import { startGetProjectById, task_LoadTasks } from '../../../../store';
 import { Spinner } from '../../../ui/Spinner';
 import { modalTaskOpen } from '../../../../store/slices/ui';
 import { ModalFormTask } from '../../../ui/modal';
+import { TaskList } from '../';
 
 
 export const ProjectById = () => {
@@ -12,7 +13,9 @@ export const ProjectById = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const { project } = useSelector( state => state.project );
+  const { tasks } = useSelector( state => state.task );
 
+  
   const { id } = params;
 
   const handleOpenModalTask = () => {
@@ -25,7 +28,7 @@ export const ProjectById = () => {
   useEffect(() => {
 
     dispatch( startGetProjectById( id ) );
-    
+
   }, []);
   
 
@@ -61,6 +64,38 @@ export const ProjectById = () => {
       
       <div className="">
         <ModalFormTask />
+      </div>
+      
+      <div className="mt-10">
+
+      {
+        (!tasks?.length > 0)
+          ?
+          (
+            <h4 className='
+              cursor-pointer
+              shadow-[6px_6px_14px_#c9cecf,-6px_-6px_14px_#ffffff] 
+              p-4 rounded-xl 
+              text-center 
+              font-bold 
+              text-my-color-five 
+              text-2xl 
+              transition-all'
+            >
+              No hay tareas creadas para este proyecto
+            </h4>
+          )
+          :
+          (
+            tasks.map( task => (
+              <TaskList key={task._id} task={task} />
+            ))
+          )
+        
+      }
+
+        
+        
       </div>
       
     </section>
