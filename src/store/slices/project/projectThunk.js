@@ -1,7 +1,8 @@
 import Swal from "sweetalert2";
 import { fectchWithoutToken, fectchWithToken } from "../../../helpers/fectch";
+import { collab_loadCollaborator } from "../collaborator/collaboratorSlice";
 import { task_LoadTasks } from "../task";
-import { addProject, clearActiveProject, deleteProject, getProjectById, projectsLoad, setActiveProject, updateProject } from "./projectSlice";
+import { addProject, clearActiveProject, clearProject, deleteProject, getProjectById, projectsLoad, setActiveProject, updateProject } from "./projectSlice";
 
 
 
@@ -74,7 +75,11 @@ export const startGetProjectById = ( id ) => {
             dispatch( getProjectById(body.project) )
             dispatch( setActiveProject(body.project._id) );
             dispatch( task_LoadTasks(body.project.tasks) );
+            dispatch( collab_loadCollaborator(body.project.collaborators) );
+
         }else {
+
+            dispatch( clearProject() );
 
             Swal.fire({
                 title   : 'Error',

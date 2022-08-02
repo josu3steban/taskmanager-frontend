@@ -17,7 +17,7 @@ export const fectchWithoutToken = async( endpoint, data, method='GET' ) => {
 
 export const fectchWithToken = async( endpoint, data, method='GET' ) => {
     const url = `${baseUrl}/${endpoint}`;
-    
+
     if( method === 'GET' ) {
         return await fetch( url, {
             method,
