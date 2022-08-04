@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'sm': {'max': '639px'},
-        'md': {'min': '639px'},
+        'sm': {'max': '640px'},
+        'md': {'min': '641px'},
       },
 
       colors: {
