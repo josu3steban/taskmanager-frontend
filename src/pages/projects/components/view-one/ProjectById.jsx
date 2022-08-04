@@ -35,10 +35,10 @@ export const ProjectById = () => {
     dispatch( modalTaskOpen() );
     
   }
-  
+
   useEffect(() => {
 
-    socket = io(import.meta.env.VITE_BASE_API_URL);
+    socket = io(import.meta.env.VITE_BASE_API_URL, { transports: ["websocket"] });
     socket.emit('open project', id);
 
     dispatch( startProjectLoad() );
