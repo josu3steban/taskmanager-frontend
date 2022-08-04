@@ -108,7 +108,7 @@ export const Register = () => {
                         className='w-full text-xl p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-my-color-four transition-colors'
                         id='password'
                         name='password'
-                        type='text'
+                        type='password'
                         placeholder='******'
                       />
                       {
