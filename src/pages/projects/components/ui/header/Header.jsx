@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { startLogout } from '../../../../../store/slices/auth/'
 
 import './header.css';
-import { clearActiveProject, task_ClearActiveTask, task_clearAllTasks } from '../../../../../store';
+import { clearActiveProject, collab_clearAllollaborator, collab_clearollaborator, task_ClearActiveTask, task_clearAllTasks } from '../../../../../store';
+import { ModalSearchProject } from '../../../../ui/modal/ModalSearchProject';
+import { modalSearchProjectOpen } from '../../../../../store/slices/ui';
 
 export const Header = () => {
 
@@ -14,10 +16,13 @@ export const Header = () => {
   
   const handleLogout = () => {
 
+
     dispatch( startLogout() );
     dispatch( clearActiveProject() );
     dispatch( task_ClearActiveTask() );
     dispatch( task_clearAllTasks() );
+    dispatch( collab_clearollaborator() );
+    dispatch( collab_clearAllollaborator() );
 
   };
 
@@ -28,26 +33,37 @@ export const Header = () => {
 
   };
 
+
+  const handleOpenModalSearch = () => {
+
+    dispatch( modalSearchProjectOpen() );
+
+  };
+
   const handleHomePage = () => {
     dispatch( clearActiveProject() );
     dispatch( task_ClearActiveTask() );
     dispatch( task_clearAllTasks() );
+    dispatch( collab_clearollaborator() );
+    dispatch( collab_clearAllollaborator() );
     navigate('/');
-  }
+  };
   
   return (
     <header className="flex justify-between items-center px-5 py-5">
       <h2 onClick={handleHomePage} className="font-black text-3xl text-my-color-five cursor-default">TaskManager</h2>
 
-      <input
-        className="p-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-my-color-two transition-all "
-        placeholder="Buscar un proyecto"
-        type="text"
-        name=""
-        id=""
-      />
+      <ModalSearchProject />
 
       <div className="flex items-center justify-center">
+
+        <button
+          className='flex items-center gap-2 mr-5 p-2 rounded-md hover:shadow-my-color-five/10 hover:shadow-xl transition-shadow'
+          onClick={ handleOpenModalSearch }
+        >
+          <i className="fa-solid fa-magnifying-glass text-2xl text-my-color-five hover:font-black"></i>
+          <h2 className='text-2xl font-black uppercase text-my-color-five'>Buscar Proyecto</h2>
+        </button>
 
         <button
           className='flex items-center gap-2 mr-5 p-2 rounded-md hover:shadow-my-color-five/10 hover:shadow-xl transition-shadow'
@@ -62,24 +78,18 @@ export const Header = () => {
           <span className='mr-1 text-my-color-five font-medium text-xl border-b-my-color-two border-r-my-color-two'>Bienvenido, { username }</span>
           <span className='border-r-4 rounded-xl border-r-my-color-two animate-pulse'></span>
           
-          <div className="dropdown__content text-my-color-five">
+          <div className="dropdown__content text-my-color-five bg-my-color-one">
 
             <Link
-              className='text-lg block my-3 border-b-2 border-my-color-one hover:border-b-2 hover:border-b-my-color-five transition-colors'
-              to='/proyectos'
+              className=' text-xl font-medium block my-3 border-b-2 border-my-color-one hover:border-b-2 hover:border-b-my-color-five transition-colors'
+              to='/'
             >
               Mis Proyectos
             </Link>
             
-            <Link
-              className='text-lg block border-b-2 border-my-color-one hover:border-b-2 hover:border-b-my-color-five transition-colors'
-              to='/proyectos'
-            >
-              Mis Colaboraciones
-            </Link>
             
             <button
-              className='bg-my-color-five w-full rounded-md text-my-color-one py-1 font-medium tracking-wider hover:bg-my-color-three transition-colors mt-5'
+              className='bg-my-color-five w-full rounded-md text-my-color-one py-1 font-medium tracking-wider hover:bg-my-color-three transition-colors mt-2'
               onClick={ handleLogout }
             >Salir</button>
 

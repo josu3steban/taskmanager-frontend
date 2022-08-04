@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../../../../helpers/formatDate";
 import { setActiveProject } from "../../../../store/slices/project";
@@ -7,6 +7,8 @@ export const ProjectsList = ({ project }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate()
+
+  const { uid } = useSelector( state => state.auth );
   
   // const dateFormat = formatDate(project.delivery);
   
@@ -36,11 +38,26 @@ export const ProjectsList = ({ project }) => {
         duration-300"
     >
 
-      <h3 className="text-2xl font-bold text-my-color-five mb-3 tracking-wide">{ project.name }</h3>
+      <div className="flex flex-col">
+        <h3 className="text-2xl font-bold text-my-color-five mb-3 tracking-wide">{ project.name }</h3>
 
-      <p className="text-lg text-my-color-five font-medium">{ project.description }</p>
+        <p className="text-lg text-my-color-five font-medium">{ project.description }</p>
+
+
+        <span className="self-end text-my-color-three font-medium">Fehca de entrega: <span className="text-my-color-five">{ formatDate(project.delivery) }</span> </span>
+
+      </div>
+
+      {
+        (uid !== project.creator._id)
+        &&(
+
+          <h3 className="w-fit text-xl text-my-color-one  bg-my-color-two px-2 py-1 rounded-2xl">Colaborador</h3>
+          
+        )
+      }
+
       
-      <span className="self-end text-my-color-three font-medium">Fehca de entrega: <span className="text-my-color-five">{ formatDate(project.delivery) }</span> </span>
       
     </section>
     

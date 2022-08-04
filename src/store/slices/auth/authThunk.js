@@ -158,5 +158,7 @@ export const startLogout = () => {
         dispatch( logout() );
         dispatch( clearActiveProject() );
         dispatch( clearProject() );
+
+        localStorage.clear();
     }
 }

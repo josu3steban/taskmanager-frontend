@@ -13,6 +13,7 @@ import { modalTaskOpen } from "../../../../store/slices/ui";
 
 import './tasklist.css';
 import Swal from 'sweetalert2';
+import { checkAdmin } from '../../../../helpers/checkAdmin';
 
 export const TaskList = ({ task }) => {
 
@@ -33,6 +34,8 @@ export const TaskList = ({ task }) => {
     };
 
     const dispatch = useDispatch();
+
+    const isAdmin = checkAdmin();
 
     const handleComplete = ( state ) => {
 
@@ -76,35 +79,38 @@ export const TaskList = ({ task }) => {
 
     const leadingActions = () => (
 
-        <LeadingActions>
-            <SwipeAction
-                onClick={ () => handleEdit(task) }
-            >
-                Editar
-            </SwipeAction>
-        </LeadingActions>
-        
+        ( isAdmin ) && (
+            <LeadingActions>
+                <SwipeAction
+                    onClick={ () => handleEdit(task) }
+                >
+                    Editar
+                </SwipeAction>
+            </LeadingActions>
+        )
     );
 
 
     const trailingActions = () => (
 
-        <TrailingActions>
-            <SwipeAction
-                onClick={ () => handleDelete(task._id) }
-            >
-                Eliminar
-            </SwipeAction>
-        </TrailingActions>
-        
+        ( isAdmin ) && (
+            <TrailingActions>
+                <SwipeAction
+                    onClick={ () => handleDelete(task._id) }
+                >
+                    Eliminar
+                </SwipeAction>
+            </TrailingActions>
+        )
     );
     
   return (
 
     <SwipeableList>
         <SwipeableListItem
-            leadingActions  ={ leadingActions() }
-            trailingActions ={ trailingActions() }
+            
+            leadingActions  = { leadingActions() }
+            trailingActions = { trailingActions() }
         >
 
         <div className={`
@@ -130,6 +136,16 @@ export const TaskList = ({ task }) => {
             <p className="mb-2 font-medium">{ formatDate(task.delivery) }</p>
 
             <p className="text-gray-600">Prioridad: <span className={`font-medium ${colorPriority(task.priority)}`}>{ task.priority }</span></p>
+
+            
+            {
+                (task.complete)
+                && (
+                    <p className="text-gray-600">Completada por: <span className={`font-medium ${colorPriority(task.priority)}`}>{ task.complete.name }</span></p>
+                )
+            }
+
+            
 
         </section>
 

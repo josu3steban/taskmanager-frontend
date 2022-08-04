@@ -3,7 +3,7 @@ import { authSlice } from "./slices/auth";
 import { collaboratorSlice } from "./slices/collaborator";
 import { projectSlice } from "./slices/project";
 import { taskSlice } from "./slices/task/taskSlice";
-import { modalTaskSlice, searchingSlice } from "./slices/ui";
+import { modalSearchProjectSlice, modalTaskSlice, searchingSlice } from "./slices/ui";
 
 
 
@@ -15,5 +15,6 @@ export const store = configureStore({
         searching : searchingSlice.reducer,
         task      : taskSlice.reducer,
         collaborator: collaboratorSlice.reducer,
+        modalSearchProject: modalSearchProjectSlice.reducer
     }
 });

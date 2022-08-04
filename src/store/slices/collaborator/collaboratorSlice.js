@@ -37,6 +37,12 @@ export const collaboratorSlice = createSlice({
             
         },
 
+        collab_clearAllollaborator: ( state ) => {
+
+            state.collaborators = [];
+            
+        },
+
         collab_delteCollaborator: ( state, action ) => {
 
             state.collaborators = state.collaborators.filter( collaborator => collaborator._id !== action.payload.uid);
@@ -47,4 +53,4 @@ export const collaboratorSlice = createSlice({
 });
 
 
-export const { collab_loadCollaborator, collab_setCollaborator, collab_clearollaborator, collab_delteCollaborator } = collaboratorSlice.actions;
+export const { collab_loadCollaborator, collab_setCollaborator, collab_clearollaborator, collab_delteCollaborator, collab_clearAllollaborator } = collaboratorSlice.actions;

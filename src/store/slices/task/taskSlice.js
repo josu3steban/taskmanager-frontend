@@ -24,8 +24,10 @@ export const taskSlice = createSlice({
 
         task_addTask: ( state, action ) => {
 
-            state.tasks.push( action.payload );
-            
+            if(!state.tasks.find( task => task._id === action.payload._id)) {
+                state.tasks = [ ...state.tasks, action.payload]
+            }
+
         },
 
         task_SetActiveTask: ( state, action ) => {
