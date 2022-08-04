@@ -41,7 +41,7 @@ export const Login = () => {
         '>
         <h2
           className='
-            sm:text-2xl
+            sm:text-xl
           
             uppercase
             text-5xl
@@ -144,7 +144,7 @@ export const Login = () => {
                 <div className="">
                   <input
                     className='
-                      
+                      sm:text-xl
                     
                       uppercase
                       px-3

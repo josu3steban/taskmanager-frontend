@@ -27,7 +27,7 @@ export const Register = () => {
       <header className='sm:mb-5 text-my-color-one mb-20'>
         <h2
           className='
-            sm:text-2xl
+            sm:text-xl
             uppercase
             text-5xl
             text-my-color-one
@@ -35,7 +35,7 @@ export const Register = () => {
             leading-tight 
             mb-3
           '>¡Registrate y empieza a crear y a <span className='text-my-color-three'>administrar proyectos!</span></h2>
-        <span className='sm:text-3xl uppercase text-6xl font-black'>¿qué esperas? 🤑🤑</span>
+        <span className='sm:text-2xl uppercase text-6xl font-black'>¿qué esperas? 🤑🤑</span>
       </header>
       
       <Formik
@@ -59,8 +59,8 @@ export const Register = () => {
           return(
             <>
               <Form className='sm:p-4 px-6 py-10 bg-my-color-two rounded-md'>
-                <div className="sm:gap-3 sm:items-center flex gap-8">
-                  <div className="w-1/2">
+                <div className="sm:gap-0 sm:flex-col flex gap-8">
+                  <div className="sm:w-full w-1/2">
                     <div className="">
                       <label className='sm:text-xl  block text-3xl font-bold text-my-color-four mb-2 uppercase' htmlFor="email">usuario</label>
                       <Field
@@ -94,7 +94,7 @@ export const Register = () => {
                     </div>
                   </div>
                   
-                  <div className="w-1/2">
+                  <div className="sm:w-full w-1/2">
                     <div className="">
                       <label className='sm:text-xl block text-3xl font-bold text-my-color-four mb-2 uppercase' htmlFor="email">Email</label>
                       <Field
@@ -131,7 +131,23 @@ export const Register = () => {
 
                 <div className="">
                   <input
-                    className='uppercase px-3 py-3 mt-5 w-full bg-[#3d5a80] text-my-color-one rounded-lg cursor-pointer font-black text-3xl hover:bg-[#98c1d9] hover:text-my-color-four transition-colors'
+                    className='
+                      sm:text-xl
+                    
+                      uppercase
+                      px-3
+                      py-3
+                      mt-5
+                      w-full
+                      bg-[#3d5a80]
+                      text-my-color-one
+                      rounded-lg
+                      cursor-pointer
+                      font-black
+                      text-3xl
+                      hover:bg-[#98c1d9]
+                      hover:text-my-color-four
+                      transition-colors'
                     type="submit"
                     value="registrarme"
                   />
