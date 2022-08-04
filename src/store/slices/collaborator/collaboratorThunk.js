@@ -85,8 +85,6 @@ export const collab_startDeleteCollaborator = ( projectId, username ) => {
 
         if( body.ok ) {
 
-            console.log(body)
-
             dispatch( collab_delteCollaborator( body.user ) );
 
             Swal.fire({

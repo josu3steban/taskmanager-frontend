@@ -55,7 +55,7 @@ export const startConfirmAccount = ( token ) => {
     return async( dispatch ) => {
         const response = await fectchWithoutToken( `auth/account/confirm/${token}`, {}, 'GET' );
         const body = await response.json();
-        console.log('asssssssssssss',body)
+
         if( body.ok ) {
             Swal.fire({
                 position: 'top-end',
@@ -136,7 +136,6 @@ export const startLogin = ({ email, password }) => {
         const body     = await response.json();
 
         if( body.ok ) {
-            console.log(body.token)
             
             localStorage.setItem('token', body.token);
             

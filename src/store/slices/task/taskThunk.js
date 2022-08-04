@@ -144,8 +144,6 @@ export const task_startDeleteTask = ( id ) => {
 
         if( body.ok ) {
 
-            console.log(body)
-
             // dispatch( task_DeleteTask(id) );
             // dispatch( task_ClearActiveTask() );
 

@@ -17,6 +17,7 @@ export const Projects = () => {
   useEffect(() => {
 
     dispatch( startProjectLoad() );
+    dispatch( clearActiveProject() );
     
   }, []);
   
