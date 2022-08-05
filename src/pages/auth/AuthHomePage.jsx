@@ -6,7 +6,7 @@ export const AuthHomePage = () => {
       className="
         
       
-        h-screen
+        min-h-screen
         flex
         flex-col
         items-center

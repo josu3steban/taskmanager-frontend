@@ -3,7 +3,16 @@ import { Header } from "./components/ui/"
 
 export const ProjectHomePage = () => {
   return (
-    <div className="bg-my-color-one h-screen  box-border overflow-y-scroll animate__animated animate__fadeIn animate__faster">
+    <div
+      className="
+        bg-my-color-one
+        h-screen 
+        box-border
+        overflow-auto
+        animate__animated
+        animate__fadeIn
+        animate__faster
+      ">
 
       <Header />
 
