@@ -114,6 +114,11 @@ export const TaskList = ({ task }) => {
         >
 
         <div className={`
+            sm:flex-col
+            sm:gap-5
+            sm:p-2
+            sm:items-start
+        
             w-full
             mb-8
             flex
@@ -127,15 +132,15 @@ export const TaskList = ({ task }) => {
             ${task.status ? 'border-l-4 border-my-color-two ' : 'border-l-4 border-my-color-three'}
         `}>
 
-        <section className="">
+        <section className="sm:w-full">
 
             <h4 className="mb-2 text-xl text-my-color-five font-medium uppercase">{task.name}</h4>
 
-            <p className="mb-2 text-gray-600" >{task.description}</p>
+            <p className="sm:text-lg mb-2 text-gray-600" >{task.description}</p>
 
-            <p className="mb-2 font-medium">{ formatDate(task.delivery) }</p>
+            <p className="sm:text-lg mb-2 font-medium">{ formatDate(task.delivery) }</p>
 
-            <p className="text-gray-600">Prioridad: <span className={`font-medium ${colorPriority(task.priority)}`}>{ task.priority }</span></p>
+            <p className="sm:text-lg text-gray-600">Prioridad: <span className={`font-medium ${colorPriority(task.priority)}`}>{ task.priority }</span></p>
 
             
             {
@@ -149,7 +154,7 @@ export const TaskList = ({ task }) => {
 
         </section>
 
-        <section className="flex flex-col gap-2">
+        <section className="sm:self-end flex flex-col gap-2">
 
             <div className="">
 
@@ -158,6 +163,10 @@ export const TaskList = ({ task }) => {
                         ?(
                             <button
                                 className='
+                                    sm:px-2
+                                    sm:py-1
+                                    sm:text-lg
+                                
                                     border-2
                                     border-my-color-two
                                     hover:bg-my-color-two
@@ -165,7 +174,7 @@ export const TaskList = ({ task }) => {
                                     hover:text-my-color-one 
                                     text-xl
                                     font-medium px-4 py-3 
-                                    rounded-lg
+                                    rounded-full
                                     w-full
                                     transition-colors'
                                 onClick={ () => handleComplete(false) }
@@ -176,12 +185,16 @@ export const TaskList = ({ task }) => {
                         :(
                             <button
                                 className='
+                                    sm:px-2
+                                    sm:py-1
+                                    sm:text-lg
+                                
                                     border-2
                                     border-my-color-three hover:bg-my-color-three text-my-color-three 
                                     hover:text-my-color-one 
                                     text-xl
                                     font-medium px-4 py-3 
-                                    rounded-lg
+                                    rounded-full
                                     w-full
                                     transition-colors'
                                 onClick={ () => handleIncomplete(true) }

@@ -18,10 +18,10 @@ export const ViewCollaborator = () => {
   return (
 
     <section className="flex justify-between items-center my-3">
-        <p className="text-my-color-five font-black text-2xl">Nombre: <span className="font-medium">{collaborator.name}</span></p>
+        <p className="grow sm:text-xl text-my-color-five font-black text-2xl">Nombre: <span className="sm:inline-block sm:font-normal sm:text-lg font-medium">{collaborator.name}</span></p>
 
         <button
-            className="font-black text-2xl text-my-color-two px-4 border-b-2 border-my-color-one hover:border-my-color-two transition-colors"
+            className="sm:text-lg sm:px-0 sm:w-fit font-black text-2xl text-my-color-two px-4 border-b-2 border-my-color-one hover:border-my-color-two transition-colors"
             type="submit"
             onClick={() => handleAddCollaborator(project._id, collaborator.username)}
         >

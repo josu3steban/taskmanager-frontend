@@ -8,12 +8,23 @@ import { clearActiveProject, collab_clearAllollaborator, collab_clearollaborator
 import { ModalSearchProject } from '../../../../ui/modal/ModalSearchProject';
 import { modalSearchProjectOpen } from '../../../../../store/slices/ui';
 import IconMenu from '../../../../../assets/icon/menu.png'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Header = () => {
 
   const [ menu, setMenu ] = useState( true );
   const [ animar, setAnimar ] = useState( true );
+  const [ widthScreen, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+
+    window.addEventListener('resize', () => {
+      setScreenWidth(window.innerWidth);
+    } );
+    
+  });
+
+  
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -49,12 +60,23 @@ export const Header = () => {
   };
 
   const handleHomePage = () => {
-    dispatch( clearActiveProject() );
-    dispatch( task_ClearActiveTask() );
-    dispatch( task_clearAllTasks() );
-    dispatch( collab_clearollaborator() );
-    dispatch( collab_clearAllollaborator() );
-    navigate('/');
+
+    if(widthScreen <= 640 ) {
+      handleMenu();
+    } else {
+
+      setMenu(true);
+      setAnimar(true);
+      dispatch( clearActiveProject() );
+      dispatch( task_ClearActiveTask() );
+      dispatch( task_clearAllTasks() );
+      dispatch( collab_clearollaborator() );
+      dispatch( collab_clearAllollaborator() );
+      navigate('/');
+      
+    }
+
+    
   };
 
 
@@ -96,15 +118,15 @@ export const Header = () => {
               sm:bg-my-color-five
               ${menu ? 'sm:w-0':'sm:w-full'}
               sm:absolute
-              sm:h-10
+              sm:h-16
               transition-all
               duration-500
             `}>
           </div>
 
-          <h2 onClick={handleMenu} className={`${menu ? 'text-my-color-five' : 'text-my-color-one'}   sm:pl-2 sm:pt-1 sm:relative sm:left-6 sm:-top-1 sm:text-xl font-black text-3xl cursor-default`}>TaskManager</h2>
+          <h2 onClick={handleHomePage} className={`${menu ? 'text-my-color-five' : 'text-my-color-one'} sm:pl-2 sm:pt-3 sm:relative sm:left-6 sm:-top-1 sm:text-xl font-black text-3xl cursor-default`}>TaskManager</h2>
 
-          <div className="sm:pl-1 sm:pt-1 hidden sm:absolute sm:flex sm:justify-start sm:items-center">
+          <div className="sm:pt-3 sm:pl-1 hidden sm:absolute sm:flex sm:justify-start sm:items-center">
             <div className="">
               <button
                   id='icon-menu'
@@ -138,28 +160,39 @@ export const Header = () => {
               sm:h-screen
 
               sm:absolute
-              sm:top-8
+              sm:top-16
               sm:bg-my-color-five
 
             
               sm:flex-col
               flex
           `}>
+
+            <button
+              className='hidden sm:flex items-center gap-2 mr-5 p-2 rounded-md hover:shadow-my-color-five/10 hover:shadow-xl transition-shadow'
+              onClick={ handleHomePage }
+            >
+              <i className={`sm:text-my-color-one fa-solid fa-house sm:text-xl text-2xl hover:font-black`}></i>
+              <h2 className={`grow self-center sm:text-my-color-one  sm:text-base text-2xl font-black uppercase transition-colors`}>Inicio</h2>
+            </button>
+
+            <hr className='sm:my-2'/>
+            
             <button
               className=' flex items-center gap-2 mr-5 p-2 rounded-md hover:shadow-my-color-five/10 hover:shadow-xl transition-shadow'
               onClick={ handleOpenModalSearch }
             >
-              <i className={`${menu ? 'text-my-color-five' : 'text-my-color-one'}  fa-solid fa-magnifying-glass sm:text-base text-2xl hover:font-black`}></i>
-              <h2 className={`${menu ? 'text-my-color-five' : 'text-my-color-one'} sm:text-base text-2xl font-black uppercase`}>Buscar Proyecto</h2>
+              <i className={`sm:text-my-color-one fa-solid fa-magnifying-glass sm:text-xl text-2xl hover:font-black`}></i>
+              <h2 className={`sm:text-my-color-one sm:text-base text-2xl font-black uppercase transition-colors`}>Buscar Proyecto</h2>
             </button>
 
-            <hr/>
+            <hr className='sm:my-2'/>
 
             <button
               className='flex items-center gap-2 mr-5 p-2 rounded-md hover:shadow-my-color-five/10 hover:shadow-xl transition-shadow'
               onClick={ hanldeNewProject }
             >
-              <i className="fa-regular fa-square-plus sm:text-base sm:top-0 text-4xl text-my-color-two relative top-[2px] hover:font-black"></i>
+              <i className="fa-regular fa-square-plus sm:text-2xl sm:top-0 text-4xl text-my-color-two relative top-[2px] hover:font-black"></i>
               <h2 className='sm:text-base text-2xl font-black uppercase text-my-color-two'>Nuevo Proyecto</h2>
             </button>
           </div>
@@ -171,7 +204,7 @@ export const Header = () => {
       <div
       className="
         sm:flex-col
-      
+        sm:pt-2
         flex
         items-center
         justify-center
@@ -179,7 +212,7 @@ export const Header = () => {
         
         <div className="dropdown sm:text-end sm:mr-2">
 
-          <span className='mr-1 text-my-color-five font-medium text-xl border-b-my-color-two border-r-my-color-two'>Hola, { username }</span>
+          <span className='sm:text-lg mr-1 text-my-color-five font-medium text-xl border-b-my-color-two border-r-my-color-two'>Hola, { username }</span>
           <span className='border-r-4 rounded-xl border-r-my-color-two animate-pulse'></span>
           
           <div className="dropdown__content text-my-color-five bg-my-color-one">

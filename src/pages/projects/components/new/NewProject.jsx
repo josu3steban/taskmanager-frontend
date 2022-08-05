@@ -24,7 +24,7 @@ export const NewProject = () => {
   return (
     <div className="animate__animated animate__fadeIn animate__faster">
 
-      <h2 className="font-black text-4xl text-my-color-five uppercase mb-5">Crear un Proyecto</h2>
+      <h2 className="sm:text-3xl font-black text-4xl text-my-color-five uppercase mb-5">Crear un Proyecto</h2>
       
       {/* <div className=""> */}
         <FormProject />

@@ -59,12 +59,12 @@ export const EditProject = () => {
   return (
     <section>
 
-      <div className="flex justify-between items-center">
+      <div className="sm:mb-5 flex justify-between items-center">
 
-        <h2 className="font-black text-4xl text-my-color-five uppercase mb-5">Editar Proyecto</h2>
+        <h2 className="sm:text-3xl sm:mb-0 font-black text-4xl text-my-color-five uppercase mb-5">Editar Proyecto</h2>
 
         <button
-          className="font-black text-xl text-red-800 hover:text-my-color-three transition-colors"
+          className="sm:text-sm sm:font-normal font-black text-xl text-red-800 hover:text-my-color-three transition-colors"
           onClick={ handleDelete }
         >
           <i className="fa-solid fa-trash-can mr-1"></i>

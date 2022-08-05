@@ -35,9 +35,9 @@ export const NewCollaborator = () => {
 
     <>
 
-      <h2 className="font-black text-4xl text-my-color-five uppercase mb-5">Agregar Colaborado al Proyecto: {project?.name}</h2>
+      <h2 className="sm:text-2xl font-black text-4xl text-my-color-five uppercase mb-5">Agregar Colaborado al Proyecto: <span className='sm:block text-my-color-two'>{project?.name}</span></h2>
 
-      <section className="w-2/4 mx-auto p-5 neumorphism mt-10">
+      <section className="sm:w-11/12 sm:p-2 w-2/4 mx-auto p-5 neumorphism mt-10">
 
         <FormCollaborator />
         
@@ -51,7 +51,7 @@ export const NewCollaborator = () => {
             
             (!!collaborator)
               && (
-                <section className="w-2/4 mx-auto p-5 neumorphism mt-10 animate__animated animate__bounceIn">
+                <section className="sm:w-11/12 sm:p-2 w-2/4 mx-auto p-5 neumorphism mt-10 animate__animated animate__bounceIn">
 
                   <ViewCollaborator />
 

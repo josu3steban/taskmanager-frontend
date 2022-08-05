@@ -51,7 +51,7 @@ export const FormProject = (props) => {
     
   return (
 
-    <section className="w-2/4 mx-auto p-5 neumorphism ">
+    <section className="sm:w-10/12 sm:px-2 w-2/4 mx-auto p-5 neumorphism ">
 
       <Formik
         initialValues={{
@@ -75,9 +75,9 @@ export const FormProject = (props) => {
 
               <Form>
 
-                <div className="flex flex-col items-center mb-10">
+                <div className="sm:mb-6 flex flex-col items-center mb-10">
                   <Field
-                    className='w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                    className='sm:w-full sm:text-xl w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
                     type='text'
                     name='name'
                     id='name'
@@ -85,14 +85,14 @@ export const FormProject = (props) => {
                   />
                   {
                     (errors.name && touched.name)
-                      ? <span className="self-end uppercase block text-sm text-right font-semibold text-red-700">{ errors.name }</span>
-                      : <span className="uppercase block text-sm text-transparent">null</span>
+                      ? <span className="sm:text-xs sm:font-normal self-end uppercase block text-sm text-right font-semibold text-red-700">{ errors.name }</span>
+                      : <span className="sm:text-xs sm:font-normal uppercase block text-sm text-transparent">null</span>
                   }
                 </div>
 
-                <div className="flex flex-col items-center mb-10">
+                <div className="sm:mb-6 flex flex-col items-center mb-10">
                   <Field
-                    className='w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] border-r-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                    className='sm:w-full sm:text-xl w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] border-r-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
                     type='text'
                     as='textarea'
                     rows='5'
@@ -102,14 +102,14 @@ export const FormProject = (props) => {
                   />
                   {
                     (errors.description && touched.description)
-                      ? <span className="self-end uppercase block text-sm text-right font-semibold text-red-700">{ errors.description }</span>
-                      : <span className="uppercase block text-sm text-transparent">null</span>
+                      ? <span className="sm:text-xs sm:font-normal self-end uppercase block text-sm text-right font-semibold text-red-700">{ errors.description }</span>
+                      : <span className="sm:text-xs sm:font-normal uppercase block text-sm text-transparent">null</span>
                   }
                 </div>
 
-                <div className="flex flex-col items-center mb-10">
+                <div className="flex flex-col items-center sm:mb-6 mb-10">
                   <Field
-                    className='w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                    className='sm:w-full sm:text-xl w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
                     type={ (dateSelect) ? 'date' : 'text'}
                     onFocus ={ () => { setDateSelect(true) }}
                     onBlur  ={ () => { setDateSelect(false) }}
@@ -119,14 +119,14 @@ export const FormProject = (props) => {
                   />
                   {
                     (errors.delivery && touched.delivery)
-                      ? <span className="self-end uppercase block text-sm text-right font-semibold text-red-700">{ errors.delivery }</span>
-                      : <span className="uppercase block text-sm text-transparent">null</span>
+                      ? <span className="sm:text-xs sm:font-normal self-end uppercase block text-sm text-right font-semibold text-red-700">{ errors.delivery }</span>
+                      : <span className="sm:text-xs sm:font-normal uppercase block text-sm text-transparent">null</span>
                   }
                 </div>
 
-                <div className="flex flex-col items-center mb-16">
+                <div className="flex flex-col items-center sm:mb-10 mb-16">
                   <Field
-                    className='w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                    className='sm:w-full sm:text-xl w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
                     type='text'
                     name='client'
                     id='client'
@@ -134,12 +134,12 @@ export const FormProject = (props) => {
                   />
                   {
                     (errors.client && touched.client)
-                      ? <span className="self-end uppercase block text-sm text-right font-semibold text-red-700">{ errors.client }</span>
-                      : <span className="uppercase block text-sm text-transparent">null</span>
+                      ? <span className="sm:text-xs sm:font-normal self-end uppercase block text-sm text-right font-semibold text-red-700">{ errors.client }</span>
+                      : <span className="sm:text-xs sm:font-normal uppercase block text-sm text-transparent">null</span>
                   }
                 </div>
 
-                <div className="flex gap-5 justify-end">
+                <div className="sm:justify-center sm:gap-0 flex gap-5 justify-end">
 
                   {/* {
                     (!!activeProject)

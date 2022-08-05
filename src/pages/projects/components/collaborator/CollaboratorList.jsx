@@ -75,6 +75,11 @@ export const CollaboratorList = ({ collaborator }) => {
         >
 
             <div className={`
+                sm:flex-col
+                sm:gap-5
+                sm:p-2
+                sm:items-start
+            
                 w-full
                 mb-8
                 flex
@@ -88,53 +93,14 @@ export const CollaboratorList = ({ collaborator }) => {
 
                 <section className="">
 
-                    <p className="mb-2 text-xl text-my-color-five font-medium ">Nombre: <span className='font-normal'>{collaborator.name}</span></p>
+                    <p className="sm:text-lg mb-2 text-xl text-my-color-five font-medium ">Nombre: <span className=' font-normal'>{collaborator.name}</span></p>
 
-                    <p className="mb-2 text-xl text-my-color-five font-medium ">Nombre de usuario: <span className='font-normal'>{collaborator.username}</span></p>
+                    <p className="sm:text-lg mb-2 text-xl text-my-color-five font-medium ">Usuario: <span className='font-normal'>{collaborator.username}</span></p>
 
-                    <p className="mb-2 text-xl text-my-color-five font-medium ">Email: <span className='font-normal'>{collaborator.email}</span></p>
+                    <p className="sm:text-lg mb-2 text-xl text-my-color-five font-medium ">Email: <span className='font-normal'>{collaborator.email}</span></p>
 
                 </section>
 
-                <section className="flex flex-col gap-2">
-                    <div className="">
-                        {
-                            (true)
-                                ?(
-                                    <button
-                                        className='
-                                            border-2
-                                            border-my-color-two
-                                            hover:bg-my-color-two
-                                            text-my-color-two
-                                            hover:text-my-color-one 
-                                            text-xl
-                                            font-medium px-4 py-3 
-                                            rounded-lg
-                                            w-full
-                                            transition-colors'
-                                    >
-                                        Completada
-                                    </button>
-                                )
-                                :(
-                                    <button
-                                        className='
-                                            border-2
-                                            border-my-color-three hover:bg-my-color-three text-my-color-three 
-                                            hover:text-my-color-one 
-                                            text-xl
-                                            font-medium px-4 py-3 
-                                            rounded-lg
-                                            w-full
-                                            transition-colors'
-                                    >
-                                        Incompleta
-                                    </button>  
-                                )
-                        }
-                    </div>
-                </section>
             </div>
         </SwipeableListItem>
     </SwipeableList>

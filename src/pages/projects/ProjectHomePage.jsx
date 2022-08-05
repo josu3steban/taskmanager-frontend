@@ -16,7 +16,7 @@ export const ProjectHomePage = () => {
 
       <Header />
 
-      <main className="w-5/6 m-auto my-10">
+      <main className="sm:w-full sm:my-5 sm:px-2 w-5/6 m-auto my-10">
         <Outlet />
       </main>
       

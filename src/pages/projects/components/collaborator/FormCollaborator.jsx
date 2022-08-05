@@ -52,9 +52,9 @@ export const FormCollaborator = () => {
 
                 <Form>
 
-                    <div className="flex flex-col items-center mb-10">
+                    <div className="sm:mb-4 flex flex-col items-center mb-10">
                     <Field
-                        className='w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                        className='sm:w-full sm:text-xl w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
                         type='text'
                         name='username'
                         id='username'
@@ -62,12 +62,12 @@ export const FormCollaborator = () => {
                     />
                     {
                         (errors.username && touched.username)
-                        ? <span className="self-end uppercase block text-sm text-right font-semibold text-red-700">{ errors.username }</span>
+                        ? <span className="sm:text-xs sm:font-normal self-end uppercase block text-sm text-right font-semibold text-red-700">{ errors.username }</span>
                         : <span className="uppercase block text-sm text-transparent">null</span>
                     }
                     </div>
 
-                    <div className="flex gap-5 justify-end">
+                    <div className="sm:pb-2 sm:justify-center flex gap-5 justify-end">
                         <button
                             className="font-black text-2xl text-my-color-two px-4 border-b-2 border-my-color-one hover:border-my-color-two transition-colors"
                             type="submit"
