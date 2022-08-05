@@ -61,6 +61,18 @@ export const Header = () => {
 
   const handleHomePage = () => {
 
+    setMenu(true);
+    setAnimar(true);
+    dispatch( clearActiveProject() );
+    dispatch( task_ClearActiveTask() );
+    dispatch( task_clearAllTasks() );
+    dispatch( collab_clearollaborator() );
+    dispatch( collab_clearAllollaborator() );
+    navigate('/');
+    
+  };
+
+  const handleHomeMenu = () => {
     if(widthScreen <= 640 ) {
       handleMenu();
     } else {
@@ -75,9 +87,7 @@ export const Header = () => {
       navigate('/');
       
     }
-
-    
-  };
+  }
 
 
   const handleMenu = () => {
@@ -124,7 +134,7 @@ export const Header = () => {
             `}>
           </div>
 
-          <h2 onClick={handleHomePage} className={`${menu ? 'text-my-color-five' : 'text-my-color-one'} sm:pl-2 sm:pt-3 sm:relative sm:left-6 sm:-top-1 sm:text-xl font-black text-3xl cursor-default`}>TaskManager</h2>
+          <h2 onClick={handleHomeMenu} className={`${menu ? 'text-my-color-five' : 'text-my-color-one'} sm:pl-2 sm:pt-3 sm:relative sm:left-6 sm:-top-1 sm:text-xl font-black text-3xl cursor-default`}>TaskManager</h2>
 
           <div className="sm:pt-3 sm:pl-1 hidden sm:absolute sm:flex sm:justify-start sm:items-center">
             <div className="">
