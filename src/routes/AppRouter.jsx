@@ -6,6 +6,7 @@ import { ProjectRoutes } from "../pages/projects/routes";
 import { useEffect } from "react";
 import { stratChecking } from "../store/slices/auth";
 import 'animate.css'
+import { Spinner } from "../pages/ui/Spinner";
 
 
 export const AppRouter = () => {
@@ -19,7 +20,7 @@ export const AppRouter = () => {
   }, []);
   
   if( checking === 'checking') {
-    return( <h1>COMPROBANDO...</h1> );
+    return( <Spinner /> );
   }
   
   return (
