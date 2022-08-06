@@ -16,7 +16,7 @@ export const ConfirmPassword = () => {
     
     setTimeout(() => {
       navigate('/auth/');
-    }, 2000);
+    }, 4000);
     
   }, []);
   

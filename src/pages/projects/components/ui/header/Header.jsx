@@ -134,7 +134,7 @@ export const Header = () => {
             `}>
           </div>
 
-          <h2 onClick={handleHomeMenu} className={`${menu ? 'text-my-color-five' : 'text-my-color-one'} sm:pl-2 sm:pt-3 sm:relative sm:left-6 sm:-top-1 sm:text-xl font-black text-3xl cursor-default`}>TaskManager</h2>
+          <h2 onClick={handleHomeMenu} className={`${menu ? 'text-my-color-five' : 'text-my-color-one'} sm:pl-2 sm:pt-[13px] sm:relative sm:left-6 sm:-top-1 sm:text-xl font-black text-3xl cursor-default`}>TaskManager</h2>
 
           <div className="sm:pt-3 sm:pl-1 hidden sm:absolute sm:flex sm:justify-start sm:items-center">
             <div className="">
@@ -220,12 +220,12 @@ export const Header = () => {
         justify-center
       ">
         
-        <div className="dropdown sm:text-end sm:mr-2">
+        <div className="dropdown sm:text-end sm:mr-2 sm:mt-1">
 
           <span className='sm:text-lg mr-1 text-my-color-five font-medium text-xl border-b-my-color-two border-r-my-color-two'>Hola, { username }</span>
           <span className='border-r-4 rounded-xl border-r-my-color-two animate-pulse'></span>
           
-          <div className="dropdown__content text-my-color-five bg-my-color-one">
+          <div className="dropdown__content text-my-color-five bg-my-color-one sm:-mr-8">
 
             <Link
               className=' text-xl font-medium block my-3 border-b-2 border-my-color-one hover:border-b-2 hover:border-b-my-color-five transition-colors'

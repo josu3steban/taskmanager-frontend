@@ -75,7 +75,7 @@ export const ProjectById = () => {
 
       <div className="flex justify-between items-center">
 
-        <h2 className="sm:text-3xl sm:mb-0 font-black text-4xl text-my-color-two uppercase mb-5">{project.name}</h2>
+        <h2 className="sm:text-2xl sm:mb-0 font-black text-4xl text-my-color-two uppercase mb-5">{project.name}</h2>
 
       {
         (isAdmin)
@@ -109,7 +109,7 @@ export const ProjectById = () => {
 
       
 
-      <h2 className="sm:text-2xl sm:my-7 mt-10 font-black text-3xl text-my-color-five mb-5">Tareas del Proyecto</h2>
+      <h2 className="sm:text-xl sm:my-7 sm:mb-3 mt-10 font-black text-3xl text-my-color-five mb-5">Tareas del Proyecto</h2>
       
       <div className="">
         <ModalFormTask />
@@ -122,6 +122,9 @@ export const ProjectById = () => {
             ?
             (
               <h4 className='
+                sm:text-base
+              
+                animate__animated animate__bounceIn
                 cursor-pointer
                 shadow-[6px_6px_14px_#c9cecf,-6px_-6px_14px_#ffffff] 
                 p-4 rounded-xl 
@@ -147,9 +150,9 @@ export const ProjectById = () => {
           && (
             <>
 
-              <div className=" sm:mt-10 sm:mb-7 flex justify-between items-center my-10">
+              <div className="sm:mt-4 sm:mb-2 flex justify-between items-center my-10">
 
-                <h2 className="sm:text-2xl sm:mb-0 font-black text-3xl text-my-color-five mb-5">Colaboradores</h2>
+                <h2 className="sm:text-xl sm:mb-0 font-black text-3xl text-my-color-five mb-5">Colaboradores</h2>
 
                 <Link
                   className="sm:text-sm sm:font-normal sm:flex sm:flex-col sm:items-center font-black text-xl text-gray-500 hover:text-my-color-two transition-colors"
@@ -166,6 +169,8 @@ export const ProjectById = () => {
                   ?
                   (
                     <h4 className='
+                      animate__animated animate__bounceIn
+                      sm:text-base
                       cursor-pointer
                       shadow-[6px_6px_14px_#c9cecf,-6px_-6px_14px_#ffffff] 
                       p-4 rounded-xl 

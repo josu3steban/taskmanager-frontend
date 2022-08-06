@@ -75,10 +75,12 @@ export const CollaboratorList = ({ collaborator }) => {
         >
 
             <div className={`
+                animate__animated animate__bounceIn
                 sm:flex-col
-                sm:gap-5
+                sm:gap-2
                 sm:p-2
                 sm:items-start
+                sm:mb-5
             
                 w-full
                 mb-8
@@ -93,11 +95,11 @@ export const CollaboratorList = ({ collaborator }) => {
 
                 <section className="">
 
-                    <p className="sm:text-lg mb-2 text-xl text-my-color-five font-medium ">Nombre: <span className=' font-normal'>{collaborator.name}</span></p>
+                    <p className="sm:text-base sm:mb-1 mb-2 text-xl text-my-color-five font-medium ">Nombre: <span className=' font-normal'>{collaborator.name}</span></p>
 
-                    <p className="sm:text-lg mb-2 text-xl text-my-color-five font-medium ">Usuario: <span className='font-normal'>{collaborator.username}</span></p>
+                    <p className="sm:text-base sm:mb-1 mb-2 text-xl text-my-color-five font-medium ">Usuario: <span className='font-normal'>{collaborator.username}</span></p>
 
-                    <p className="sm:text-lg mb-2 text-xl text-my-color-five font-medium ">Email: <span className='font-normal'>{collaborator.email}</span></p>
+                    <p className="sm:text-base sm:mb-1 mb-2 text-xl text-my-color-five font-medium ">Email: <span className='font-normal'>{collaborator.email}</span></p>
 
                 </section>
 

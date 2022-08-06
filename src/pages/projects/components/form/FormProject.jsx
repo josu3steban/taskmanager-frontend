@@ -1,7 +1,7 @@
 import { useDispatch, useSelector  } from "react-redux";
 
 import { Formik, Form, Field } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as yup from 'yup';
 
 
@@ -10,6 +10,13 @@ import { startAddProject, startUpdateProject } from "../../../../store/slices/pr
 import { useNavigate } from "react-router-dom";
 
 export const FormProject = (props) => {
+
+  const [ widthScreen, setScreenWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setScreenWidth(window.innerWidth);
+    } );
+  });
 
   const { activeProject, project } = useSelector( state => state.project );
   const dispatch = useDispatch();
@@ -51,7 +58,7 @@ export const FormProject = (props) => {
     
   return (
 
-    <section className="sm:w-10/12 sm:px-2 w-2/4 mx-auto p-5 neumorphism ">
+    <section className="animate__animated animate__bounceIn sm:w-10/12 sm:p-2 w-2/4 mx-auto p-5 neumorphism ">
 
       <Formik
         initialValues={{
@@ -75,9 +82,9 @@ export const FormProject = (props) => {
 
               <Form>
 
-                <div className="sm:mb-6 flex flex-col items-center mb-10">
+                <div className="sm:mb-4 flex flex-col items-center mb-10">
                   <Field
-                    className='sm:w-full sm:text-xl w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                    className='sm:w-full sm:text-lg sm:font-normal sm:border-b-2 w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
                     type='text'
                     name='name'
                     id='name'
@@ -90,12 +97,12 @@ export const FormProject = (props) => {
                   }
                 </div>
 
-                <div className="sm:mb-6 flex flex-col items-center mb-10">
+                <div className="sm:mb-4 flex flex-col items-center mb-10">
                   <Field
-                    className='sm:w-full sm:text-xl w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] border-r-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                    className='sm:w-full sm:text-lg sm:font-normal sm:border-b-2 w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] border-r-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
                     type='text'
                     as='textarea'
-                    rows='5'
+                    rows={`${(widthScreen <= 640) ? '2' : '5'}`}
                     name='description'
                     id='description'
                     placeholder='Descripción del proyecto'
@@ -107,9 +114,9 @@ export const FormProject = (props) => {
                   }
                 </div>
 
-                <div className="flex flex-col items-center sm:mb-6 mb-10">
+                <div className="flex flex-col sm:mb-4 sm:mt-0 items-center mb-10">
                   <Field
-                    className='sm:w-full sm:text-xl w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                    className='sm:w-full sm:text-lg sm:font-normal sm:border-b-2 w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
                     type={ (dateSelect) ? 'date' : 'text'}
                     onFocus ={ () => { setDateSelect(true) }}
                     onBlur  ={ () => { setDateSelect(false) }}
@@ -124,9 +131,9 @@ export const FormProject = (props) => {
                   }
                 </div>
 
-                <div className="flex flex-col items-center sm:mb-10 mb-16">
+                <div className="flex flex-col items-center sm:mb-8 mb-16">
                   <Field
-                    className='sm:w-full sm:text-xl w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                    className='sm:w-full sm:text-lg sm:font-normal sm:border-b-2 w-5/6 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
                     type='text'
                     name='client'
                     id='client'
@@ -155,7 +162,7 @@ export const FormProject = (props) => {
                   } */}
                   
                   <button
-                    className="font-black text-2xl text-my-color-two px-4 border-b-2 border-my-color-one hover:border-my-color-two transition-colors"
+                    className="font-black text-3xl text-my-color-two px-4 border-b-2 border-my-color-one hover:border-my-color-two transition-colors"
                     type="submit"
                   >
                     {

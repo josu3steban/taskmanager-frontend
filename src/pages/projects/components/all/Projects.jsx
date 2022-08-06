@@ -23,7 +23,7 @@ export const Projects = () => {
   
   return (
     <div className="">
-      <h2 className="sm:text-3xl font-black text-4xl text-my-color-two uppercase mb-2 animate__animated animate__fadeIn animate__faster">Mis Proyectos</h2>
+      <h2 className="sm:text-2xl font-black text-4xl text-my-color-two uppercase mb-2 animate__animated animate__fadeIn animate__faster">Mis Proyectos</h2>
       
       {
         ( !!projects )

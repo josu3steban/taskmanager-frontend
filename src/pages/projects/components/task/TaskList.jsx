@@ -114,8 +114,9 @@ export const TaskList = ({ task }) => {
         >
 
         <div className={`
+            animate__animated animate__bounceIn
             sm:flex-col
-            sm:gap-5
+            sm:gap-2
             sm:p-2
             sm:items-start
         
@@ -134,19 +135,19 @@ export const TaskList = ({ task }) => {
 
         <section className="sm:w-full">
 
-            <h4 className="mb-2 text-xl text-my-color-five font-medium uppercase">{task.name}</h4>
+            <h4 className="mb-2 text-base sm:font-bold text-my-color-five font-medium uppercase">{task.name}</h4>
 
-            <p className="sm:text-lg mb-2 text-gray-600" >{task.description}</p>
+            <p className="sm:text-base mb-2 text-gray-600" >{task.description}</p>
 
-            <p className="sm:text-lg mb-2 font-medium">{ formatDate(task.delivery) }</p>
+            <p className="sm:text-base mb-2 font-medium">{ formatDate(task.delivery) }</p>
 
-            <p className="sm:text-lg text-gray-600">Prioridad: <span className={`font-medium ${colorPriority(task.priority)}`}>{ task.priority }</span></p>
+            <p className="sm:text-base text-gray-600">Prioridad: <span className={`font-medium ${colorPriority(task.priority)}`}>{ task.priority }</span></p>
 
             
             {
                 (task.complete)
                 && (
-                    <p className="text-gray-600">Completada por: <span className={`font-medium ${colorPriority(task.priority)}`}>{ task.complete.name }</span></p>
+                    <p className="sm:text-base text-gray-600">Completada por: <span className={`font-medium ${colorPriority(task.priority)}`}>{ task.complete.name }</span></p>
                 )
             }
 
@@ -165,7 +166,7 @@ export const TaskList = ({ task }) => {
                                 className='
                                     sm:px-2
                                     sm:py-1
-                                    sm:text-lg
+                                    sm:text-sm
                                 
                                     border-2
                                     border-my-color-two
@@ -187,7 +188,7 @@ export const TaskList = ({ task }) => {
                                 className='
                                     sm:px-2
                                     sm:py-1
-                                    sm:text-lg
+                                    sm:text-sm
                                 
                                     border-2
                                     border-my-color-three hover:bg-my-color-three text-my-color-three 

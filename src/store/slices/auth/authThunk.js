@@ -32,6 +32,8 @@ export const stratRegister = ({ name, username, email, password } ) => {
                 icon    : 'success',
                 confirmButtonText: 'Aceptar',
             });
+
+            window.location = `/auth/`;
             
         }else {
             dispatch( logout() );
@@ -84,11 +86,15 @@ export const startForgotPassword = ( {email} ) => {
         const body = await response.json();
 
         if( body.ok ) {
+
             Swal.fire({
                 title   : body.msg,
                 icon    : 'success',
                 confirmButtonText: 'Aceptar',
             });
+
+            window.location = `/auth/`;
+            
         }else {
             const errors = body.errors ?? "";
             const error = body.error ?? "";

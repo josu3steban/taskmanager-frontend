@@ -25,7 +25,7 @@ export const ProjectsList = ({ project }) => {
       onClick={ () => handleSelectActiveProject( project._id ) }
       className="
         sm:mb-8
-      
+        animate__animated animate__bounceIn
         flex
         flex-col
         p-2
@@ -41,12 +41,12 @@ export const ProjectsList = ({ project }) => {
     >
 
       <div className="flex flex-col">
-        <h3 className="sm:text-xl sm:mb-2 text-2xl font-bold text-my-color-five mb-3 tracking-wide">{ project.name }</h3>
+        <h3 className="sm:text-lg sm:mb-2 text-2xl font-bold text-my-color-five mb-3 tracking-wide">{ project.name }</h3>
 
-        <p className="sm:text-base sm:font-normal text-lg text-my-color-five font-medium">{ project.description }</p>
+        <p className="sm:text-sm sm:font-normal text-lg text-my-color-five font-medium">{ project.description }</p>
 
 
-        <span className="sm:font-light sm:text-sm sm:self-auto sm:mt-4 self-end text-my-color-three font-medium">Fehca de entrega: <span className="text-my-color-five">{ formatDate(project.delivery) }</span> </span>
+        <span className="sm:font-light sm:text-xs sm:self-auto sm:mt-4 self-end text-my-color-three font-medium">Fehca de entrega: <span className="text-my-color-five">{ formatDate(project.delivery) }</span> </span>
 
       </div>
 
@@ -54,7 +54,7 @@ export const ProjectsList = ({ project }) => {
         (uid !== project.creator._id)
         &&(
 
-          <h3 className="sm:text-sm sm:mt-3 w-fit text-xl text-my-color-one  bg-my-color-two px-2 py-1 rounded-2xl">Colaborador</h3>
+          <h3 className="sm:text-xs sm:mt-4 w-fit text-xl text-my-color-one  bg-my-color-two px-2 py-1 rounded-2xl">Colaborador</h3>
           
         )
       }
