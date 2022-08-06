@@ -18,6 +18,8 @@ export const FormProject = (props) => {
     } );
   });
 
+  console.log(widthScreen)
+
   const { activeProject, project } = useSelector( state => state.project );
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -55,7 +57,7 @@ export const FormProject = (props) => {
     }, 1500);
     
   }
-    
+
   return (
 
     <section className="animate__animated animate__bounceIn sm:w-10/12 sm:p-2 w-2/4 mx-auto p-5 neumorphism ">

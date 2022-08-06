@@ -21,10 +21,9 @@ export const Header = () => {
     window.addEventListener('resize', () => {
       setScreenWidth(window.innerWidth);
     } );
+
     
   });
-
-  
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

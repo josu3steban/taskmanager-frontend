@@ -93,7 +93,7 @@ export const ModalFormTask = () => {
                         leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
-                            <div className="inline-block align-bottom bg-my-color-one rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+                            <div className="inline-block align-bottom bg-my-color-one rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-11/12 sm:p-6">
 
 
                             <div className="block absolute top-0 right-0 pt-4 pr-4">
@@ -145,7 +145,7 @@ export const ModalFormTask = () => {
 
                                                             <div className="">
                                                                 <Field
-                                                                    className='sm:w-full sm:px-2 sm:text-xl sm:font-normal w-11/12 mt-5 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                                                                    className='sm:border-b-2 sm:w-full sm:px-2 sm:text-lg sm:font-normal w-11/12 mt-5 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
                                                                     type='text'
                                                                     name='name'
                                                                     id='name'
@@ -160,7 +160,7 @@ export const ModalFormTask = () => {
 
                                                             <div className="">
                                                                 <Field
-                                                                    className='sm:w-full sm:px-2 sm:text-xl sm:font-normal w-11/12 mt-5 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] border-r-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                                                                    className='sm:border-b-2 sm:w-full sm:px-2 sm:text-lg sm:font-normal w-11/12 mt-5 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] border-r-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
                                                                     type='text'
                                                                     as="textarea"
                                                                     row="5"
@@ -177,7 +177,7 @@ export const ModalFormTask = () => {
 
                                                             <div className="">
                                                                 <Field
-                                                                    className='sm:w-full sm:px-2 sm:text-xl sm:font-normal w-11/12 mt-5 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
+                                                                    className='sm:border-b-2 sm:w-full sm:px-2 sm:text-lg sm:font-normal w-11/12 mt-5 bg-my-color-one focus:outline-none border-my-color-two border-b-[3px] px-3 pt-3 text-2xl font-medium text-my-color-five'
                                                                     type={ (dateSelect) ? 'date' : 'text'}
                                                                     onFocus ={ () => { setDateSelect(true) }}
                                                                     onBlur  ={ () => { setDateSelect(false) }}
@@ -194,7 +194,7 @@ export const ModalFormTask = () => {
 
                                                             <div className="mt-5">
                                                                 <Field
-                                                                    className='sm:w-full sm:px-2 sm:text-xl sm:font-normal w-11/12 bg-my-color-one rounded-xl text-center border-[3px] border-my-color-two focus:outline-none mt-5 px-3 py-2 text-2xl font-medium text-my-color-five'
+                                                                    className='sm:mt-0 sm:border-2 sm:w-full sm:px-2 sm:text-lg sm:font-normal w-11/12 bg-my-color-one rounded-xl text-center border-[3px] border-my-color-two focus:outline-none mt-5 px-3 py-2 text-2xl font-medium text-my-color-five'
                                                                     as="select"
                                                                     name='priority'
                                                                     id='priority'
@@ -216,10 +216,10 @@ export const ModalFormTask = () => {
                                                             </div>
 
 
-                                                            <div className="sm:mt-8 sm:justify-center w-11/12 flex gap-5 justify-end mt-10">
+                                                            <div className=" sm:mt-5 sm:justify-center w-11/12 flex gap-5 justify-end mt-10">
 
                                                                 <button
-                                                                    className="font-black text-2xl text-my-color-two px-4 border-b-2 border-my-color-one hover:border-my-color-two transition-colors"
+                                                                    className="font-black text-3xl text-my-color-two px-4 border-b-2 border-my-color-one hover:border-my-color-two transition-colors"
                                                                     type="submit"
                                                                 >
                                                                     {

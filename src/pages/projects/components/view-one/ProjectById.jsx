@@ -6,7 +6,7 @@ import io from 'socket.io-client';
 
 import { startGetProjectById, startProjectLoad, task_socketAdd, task_socketDelete, task_socketUpdate } from '../../../../store';
 import { Spinner } from '../../../ui/Spinner';
-import { modalTaskOpen } from '../../../../store/slices/ui';
+import { modalTaskClose, modalTaskOpen } from '../../../../store/slices/ui';
 import { ModalFormTask } from '../../../ui/modal';
 import { TaskList } from '../';
 import { CollaboratorList } from '../collaborator/CollaboratorList';
@@ -43,6 +43,10 @@ export const ProjectById = () => {
 
     dispatch( startProjectLoad() );
     dispatch( startGetProjectById( id ) );
+
+    return () => {
+      dispatch( modalTaskClose() );
+    }
 
   }, []);
 
